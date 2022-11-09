@@ -5,7 +5,7 @@ function photographerFactory(data) {
 
   const picture = `assets/photographers/${portrait}`;
   // ajout dans le html les elements
-  function getUserCardDOM() {
+  function getUserCard() {
     const a = document.createElement("a");
     const article = document.createElement("article");
     const img = document.createElement("img");
@@ -29,5 +29,36 @@ function photographerFactory(data) {
     return a;
   }
 
-  return { name, picture, city, country, tagline, price, getUserCardDOM };
+  function getUserInfo() {
+    const main = document.createElement("article");
+    const nom = document.createElement("h2");
+    const ville = document.createElement("h3");
+    const description = document.createElement("p");
+    nom.textContent = name;
+    ville.textContent = city + ", " + country;
+    description.textContent = tagline;
+    main.appendChild(nom);
+    main.appendChild(ville);
+    main.appendChild(description);
+    return main;
+  }
+
+  function getUserImg() {
+    const img = document.createElement("img");
+    img.setAttribute("src", picture);
+    img.setAttribute("alt", name);
+    return img;
+  }
+
+  return {
+    name,
+    picture,
+    city,
+    country,
+    tagline,
+    price,
+    getUserCard,
+    getUserInfo,
+    getUserImg,
+  };
 }

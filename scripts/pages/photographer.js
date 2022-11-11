@@ -1,4 +1,7 @@
 import { photographerFactory } from "../factories/photographer.js";
+import { getData } from "../factories/data.js";
+import { Category } from "../factories/Category.js";
+
 // import { displayModal, closeModal } from "../utils/contactForm";
 
 // document
@@ -8,10 +11,17 @@ import { photographerFactory } from "../factories/photographer.js";
 
 // Recupère les information des photographes
 
+function idCheck() {
+  const url = new URL(window.location.href);
+  const id = url.searchParams.get("id");
+  return id;
+}
+
 async function getPhotographerInfo(userId) {
   try {
     const response = await fetch("../data/photographers.json");
     const data = await response.json();
+    console.log(data);
     const filterPhotographer = data.photographers.filter(function (
       photographer
     ) {
@@ -22,6 +32,23 @@ async function getPhotographerInfo(userId) {
     console.log("error");
   }
 }
+
+// Recupère les information des medias
+
+// async function getData(userId) {
+//   try {
+//     const response = await fetch("../data/photographers.json");
+//     const data = await response.json();
+//     console.log(data);
+//
+
+//     });
+//     console.log(filterMedia);
+//     return filterMedia[""];
+//   } catch {
+//     console.log("error");
+//   }
+// }
 
 // affiche les données des photographes
 
@@ -35,7 +62,7 @@ function displayData(photographer) {
   photographersImg.appendChild(userImg);
 }
 
-// affiche les infos avec id qui correspond 
+// affiche les infos avec id qui correspond
 
 async function initInfo() {
   const url = new URL(window.location.href);
@@ -46,7 +73,27 @@ async function initInfo() {
     document.body.innerHTML = "Erreur ";
     return;
   }
+  console.log(selectedPhotographer);
   displayData(selectedPhotographer);
 }
+
+getData().then((category) => {
+  let listMedia = category.media;
+  let listCategory = listMedia.map((category) => new Category(category));
+  let listCategoryFilter = listCategory.filter(function (media) {
+    return media.photographerId == idCheck();
+  });
+  let listCategoryDom = listCategoryFilter
+    .map((category) => category.createCard())
+    .join("");
+  console.log(listCategoryFilter);
+  document
+    .querySelector("#photograph-gallery")
+    .insertAdjacentHTML("afterbegin", listCategoryDom);
+  console.log(idCheck());
+  console.log(category.media);
+  console.log(listCategoryFilter);
+  return listCategoryFilter;
+});
 
 initInfo();

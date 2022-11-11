@@ -50,6 +50,7 @@ function photographerFactory(data) {
     return img;
   }
 
+  
   return {
     name,
     picture,
@@ -60,5 +61,6 @@ function photographerFactory(data) {
     getUserCard,
     getUserInfo,
     getUserImg,
+    
   };
 }

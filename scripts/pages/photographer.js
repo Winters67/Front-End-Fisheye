@@ -21,7 +21,7 @@ async function getPhotographerInfo(userId) {
   try {
     const response = await fetch("../data/photographers.json");
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     const filterPhotographer = data.photographers.filter(function (
       photographer
     ) {
@@ -32,25 +32,6 @@ async function getPhotographerInfo(userId) {
     console.log("error");
   }
 }
-
-// Recupère les information des medias
-
-// async function getData(userId) {
-//   try {
-//     const response = await fetch("../data/photographers.json");
-//     const data = await response.json();
-//     console.log(data);
-//
-
-//     });
-//     console.log(filterMedia);
-//     return filterMedia[""];
-//   } catch {
-//     console.log("error");
-//   }
-// }
-
-// affiche les données des photographes
 
 function displayData(photographer) {
   const photographersInfo = document.querySelector(".photograph-info");
@@ -73,27 +54,60 @@ async function initInfo() {
     document.body.innerHTML = "Erreur ";
     return;
   }
-  console.log(selectedPhotographer);
+  // console.log(selectedPhotographer);
   displayData(selectedPhotographer);
 }
 
 getData().then((category) => {
+  // media
   let listMedia = category.media;
   let listCategory = listMedia.map((category) => new Category(category));
   let listCategoryFilter = listCategory.filter(function (media) {
     return media.photographerId == idCheck();
   });
-  let listCategoryDom = listCategoryFilter
-    .map((category) => category.createCard())
+  // photographe
+  let listPhotograph = category.photographers;
+  console.log(listPhotograph);
+
+  let listphotographFilter = listPhotograph.filter(function (photographer) {
+    return photographer.id == idCheck();
+  });
+
+  function firstName() {
+    for (let index = 0; index < listphotographFilter.length; index++) {
+      const element = listphotographFilter[index];
+      return element.name.split(" ")[0];
+    }
+    console.log(firstName());
+  }
+  listphotographFilter[0].name = firstName();
+
+   let arrayPhotographers = listphotographFilter.map(
+    (category) => new Category(category)
+  );
+
+  const fusionCategory = listCategoryFilter.concat(arrayPhotographers);
+  console.log (fusionCategory)
+  
+ 
+    let listCategoryDom = fusionCategory.map((category) => category.createCard())
     .join("");
-  console.log(listCategoryFilter);
+ 
+
+
+
+
   document
     .querySelector("#photograph-gallery")
-    .insertAdjacentHTML("afterbegin", listCategoryDom);
-  console.log(idCheck());
-  console.log(category.media);
-  console.log(listCategoryFilter);
-  return listCategoryFilter;
+    .insertAdjacentHTML(
+      "afterbegin",
+      listCategoryDom
+    );
+
+  // console.log(idCheck());
+  // console.log(category.media);
+  //  console.log(listCategoryFilter);
+  return listCategoryDom 
 });
 
 initInfo();

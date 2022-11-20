@@ -65,6 +65,7 @@ getData().then((category) => {
   let listCategoryFilter = listCategory.filter(function (media) {
     return media.photographerId == idCheck();
   });
+
   // photographe
   let listPhotograph = category.photographers;
   console.log(listPhotograph);
@@ -82,32 +83,33 @@ getData().then((category) => {
   }
   listphotographFilter[0].name = firstName();
 
-   let arrayPhotographers = listphotographFilter.map(
-    (category) => new Category(category)
-  );
+  const finishList = listphotographFilter.concat(listCategoryFilter);
 
-  const fusionCategory = listCategoryFilter.concat(arrayPhotographers);
-  console.log (fusionCategory)
+  for (let index = 0; index < finishList.length; index++) {
+    const element = finishList[index];
+     Object.assign(element, { name : firstName()});
   
- 
-    let listCategoryDom = fusionCategory.map((category) => category.createCard())
+
+
+    console.log(element);
+  }
+
+  let arrayPhotographers = finishList.map((category) => new Category(category));
+
+  let listCategoryDom = arrayPhotographers
+    .map((category) => category.createCard())
     .join("");
- 
 
-
-
+  console.log(finishList);
 
   document
     .querySelector("#photograph-gallery")
-    .insertAdjacentHTML(
-      "afterbegin",
-      listCategoryDom
-    );
+    .insertAdjacentHTML("afterbegin", listCategoryDom);
 
   // console.log(idCheck());
   // console.log(category.media);
   //  console.log(listCategoryFilter);
-  return listCategoryDom 
+  return listCategoryDom;
 });
 
 initInfo();

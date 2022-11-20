@@ -1,20 +1,15 @@
 export class Category {
   constructor(json) {
-    Object.assign(this, json);
-    
-
-    console.log(this.name)
-    
-
-    
+    json && Object.assign(this, json);  
   }
+
 
   createCard() {
     return `<div class="card">
-      <div class="title">${this.title}</div>
-      <div class="picture">
-      <img src="/assets/images/${this.name}/${this.image}">
-      </div>
-            `;
+    <div class="title">${this.title}</div>
+    <div class="picture">
+    <img src="/assets/images/${this.name}/${this.image || this.video}">
+    </div>
+    </div>`;
   }
 }

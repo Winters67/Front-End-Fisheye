@@ -1,6 +1,7 @@
 import { photographerFactory } from "../factories/photographer.js";
 import { getData } from "../factories/data.js";
 import { Category } from "../factories/Category.js";
+import { LightBox } from "../factories/Lightbox.js";
 
 // import { displayModal, closeModal } from "../utils/contactForm";
 
@@ -58,9 +59,9 @@ async function initInfo() {
   displayData(selectedPhotographer);
 }
 
-getData().then((category) => {
+getData().then((result) => {
   // media
-  let listMedia = category.media;
+  let listMedia = result.media;
   let listCategory = listMedia.map((category) => new Category(category));
 
   let listCategoryFilter = listCategory.filter(function (media) {
@@ -68,7 +69,7 @@ getData().then((category) => {
   });
 
   // photographe
-  let listPhotograph = category.photographers;
+  let listPhotograph = result.photographers;
   console.log(listPhotograph);
 
   let listphotographFilter = listPhotograph.filter(function (photographer) {
@@ -82,16 +83,13 @@ getData().then((category) => {
     }
     console.log(firstName());
   }
-
   const finishList = listphotographFilter.concat(listCategoryFilter);
 
   for (let index = 0; index < finishList.length; index++) {
     const element = finishList[index];
-  Object.assign(element, { name: firstName() });
+    Object.assign(element, { name: firstName() });
     // console.log(element);
   }
-
-
   let listCategoryDom = listCategoryFilter
     .map((category) => category.createCard())
     .join("");
@@ -100,9 +98,20 @@ getData().then((category) => {
     .querySelector("#photograph-gallery")
     .insertAdjacentHTML("afterbegin", listCategoryDom);
 
+  // lightBox
+  let lightBox = new LightBox(listCategoryFilter);
+
+  document
+    .querySelectorAll("#photograph-gallery .card")
+    .forEach((listCategoryDom) => {
+      listCategoryDom.addEventListener("click", (e) => {
+        lightBox.show(e.currentTarget.dataset.id);
+      });
+    });
+
   // console.log(idCheck());
   // console.log(category.media);
-  console.log(listCategoryFilter);
+  // console.log(listCategoryFilter);
   return listCategoryDom;
 });
 

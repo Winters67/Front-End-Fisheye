@@ -72,16 +72,16 @@ export class LightBox {
 
   display() {
     if (this.currentElement.video == undefined) {
-      const box = `<img src= "/assets/images/${this.currentElement.name}/${this.currentElement.image}">
-      <div>${this.currentElement.title}</div>`;
+      const box = `<img src= "/assets/images/${this.currentElement.name}/${this.currentElement.image}"  alt="${this.currentElement.title}">
+      <div class= "title">${this.currentElement.title}</div>`;
       Object.assign(document.createElement("img"));
 
       document.querySelector("#lightbox .content .picture").innerHTML = box;
       document.querySelector("#lightbox").classList.add("show");
     }
     if (this.currentElement.image == undefined) {
-      const box = `<video controls src= "/assets/images/${this.currentElement.name}/${this.currentElement.video}">
-      <div>${this.currentElement.title}</div>`;
+      const box = `<div><video controls src= "/assets/images/${this.currentElement.name}/${this.currentElement.video}" alt="${this.currentElement.title}"></div>
+      <div class= "title">${this.currentElement.title}</div>`;
       Object.assign(document.createElement("video"));
       document.querySelector("#lightbox .content .picture").innerHTML = box;
       document.querySelector("#lightbox").classList.add("show");

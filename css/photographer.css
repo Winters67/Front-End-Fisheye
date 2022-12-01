@@ -239,16 +239,27 @@ display: flex;
 
 
 
+#contact_modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(255, 255, 255, 0.699);
+}
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
-    width: 50%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
     padding: 35px;
     margin: auto;
+    max-width: 600px;
 }
 
 .modal header {
@@ -256,8 +267,18 @@ display: flex;
     width: 100%;
 }
 
-.modal header img {
+.modal header button {
     cursor: pointer;
+    width: 42px;
+    height: 42px;
+    border: none;
+    background-color: #901c1c00;
+    transform: translateX(-30px);
+}
+
+.modal header button img {
+    width: 42px;
+    height: 42px;
 }
 
 .modal header h2 {
@@ -279,9 +300,9 @@ form label {
 }
 
 form div {
-    display: flex;
     flex-direction: column;
     width: 100%;
+    max-width: 750px;
     align-items: self-start;
     margin-bottom: 26px;
 }
@@ -291,4 +312,8 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+.text-control-message {
+    height: 170px;
 }

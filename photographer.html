@@ -20,20 +20,10 @@
     <main id="main">
       <div class="photograph-header">
         <div class="photograph-info"></div>
-        <button class="contact_button">
-          <!-- <button class="contact_button" onclick="displayModal()"></button> -->
-          Contactez-moi
-        </button>
+        <button class="contact_button" id="contactButton">Contactez-moi</button>
         <div class="photograph-img"></div>
       </div>
-      <div class="select-choice">
-        Trie par
-        <ul class="menu-choise">
-          <li class="Popularité">Popularité</li>
-          <li class="Date">Date</li>
-          <li class="Titre">Titre</li>
-        </ul>
-      </div>
+      <div class="select-menu">Trie par</div>
       <div id="photograph-gallery"></div>
     </main>
     <div id="lightbox">
@@ -43,7 +33,6 @@
         </button>
         <div class="picture"></div>
         <div class="cross-right">
-
           <button class="close">
             <img src="assets\icons\cross.svg" alt="croix" />
           </button>
@@ -57,16 +46,55 @@
       <div class="modal">
         <header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" />
-          <!-- <img src="assets/icons/close.svg" onclick="closeModal()" /> -->
+          <h2 id="nameModal"></h2>
+          <button id="closeModal">
+            <img src="../assets/icons/close.svg" alt="croix" />
+          </button>
         </header>
-        <form>
-          <div>
-            <label>Prénom</label>
-            <input />
-          </div>
-          <button class="contact_button">Envoyer</button>
-        </form>
+
+        <section id="section">
+          <form id="contact" name="contact" action="index.html" method="get">
+            <div class="contained">
+              <label>Prénom</label>
+              <input
+                class="text-control"
+                type="text"
+                id="firstName"
+                name="firstName"
+              />
+              <p id="errorFirstName"></p>
+
+              <label>Nom</label>
+              <input
+                class="text-control"
+                type="text"
+                id="lastName"
+                name="LastName"
+              />
+              <p id="errorLastName"></p>
+
+              <label>Email</label>
+              <input
+                class="text-control"
+                type="text"
+                id="e-mail"
+                name="e-mail"
+              />
+              <p id="errorMail"></p>
+
+              <label>Votre message</label>
+              <input
+                class="text-control-message"
+                type="text"
+                id="message"
+                name="message"
+              />
+            </div>
+            <button class="contact_button" id="submit" type="submit">
+              Envoyer
+            </button>
+          </form>
+        </section>
       </div>
     </div>
 

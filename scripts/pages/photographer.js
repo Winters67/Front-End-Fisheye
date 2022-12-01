@@ -2,13 +2,10 @@ import { photographerFactory } from "../factories/photographer.js";
 import { getData } from "../factories/data.js";
 import { Category } from "../factories/Category.js";
 import { LightBox } from "../factories/Lightbox.js";
+import { displayModal, closeModal } from "../utils/contactForm.js";
 
-// import { displayModal, closeModal } from "../utils/contactForm";
-
-// document
-//   .getElementById("contactButton")
-//   .addEventListener("click", displayModal);
-// document.getElementById("closeModal").addEventListener("click", closeModal);
+document.getElementById("contactButton").addEventListener("click", displayModal);
+document.getElementById("closeModal").addEventListener("click", closeModal);
 
 // Recupère les information des photographes
 

@@ -5,25 +5,25 @@ export class LightBox {
     this.manageEvent();
     console.log(this);
   }
-
+  
   show(id) {
     this.currentElement = this.getElementById(id);
     this.display();
   }
-
+  
   next() {
     let index = this.listElement.findIndex(
       (element) => element.id == this.currentElement.id
-    );
-    if (index == this.listElement.length - 1) {
-      this.currentElement = this.listElement[0];
-    } else {
-      this.currentElement = this.listElement[index + 1];
+      );
+      if (index == this.listElement.length - 1) {
+        this.currentElement = this.listElement[0];
+      } else {
+        this.currentElement = this.listElement[index + 1];
+      }
+      this.display();
     }
-    this.display();
-  }
-
-  previous() {
+    
+    previous() {
     let index = this.listElement.findIndex(
       (element) => element.id == this.currentElement.id
     );
@@ -34,42 +34,43 @@ export class LightBox {
     }
     this.display();
   }
-
+  
   manageEvent() {
     document.querySelector("#lightbox .next").addEventListener("click", () => {
       this.next();
     });
     document
-      .querySelector("#lightbox .previous")
-      .addEventListener("click", () => {
-        this.previous();
-      });
+    .querySelector("#lightbox .previous")
+    .addEventListener("click", () => {
+      this.previous();
+    });
     document.querySelector("#lightbox .close").addEventListener("click", () => {
       this.close();
     });
-
+    
     document
-      .querySelector("#lightbox .content")
-      .addEventListener("keyup", (e) => {
-        switch (e.key) {
-          case "ArrowRight":
+    .querySelector("#lightbox .content")
+    .addEventListener("keyup", (e) => {
+      switch (e.key) {
+        case "ArrowRight":
             this.next();
             break;
-          case "ArrowLeft":
-            this.previous();
-            break;
-          case "Escape":
-            this.close();
-            break;
-        }
-        console.log(e.key);
-      });
+            case "ArrowLeft":
+              this.previous();
+              break;
+              case "Escape":
+                this.close();
+                break;
+              }
+              console.log(e.key);
+            });
   }
-
+  
   getElementById(id) {
     return this.listElement.find((element) => element.id == id);
   }
 
+  
   display() {
     if (this.currentElement.video == undefined) {
       const box = `<img src= "/assets/images/${this.currentElement.name}/${this.currentElement.image}"  alt="${this.currentElement.title}">

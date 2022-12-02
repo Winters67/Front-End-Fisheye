@@ -65,17 +65,26 @@ getData().then((result) => {
 
   let listCategoryFilter = listCategory.filter(function (media) {
     return media.photographerId == idCheck();
-  });
 
+  });
+  
   // photographe
   let listPhotograph = result.photographers;
   console.log(listPhotograph);
-
+  
   let listphotographFilter = listPhotograph.filter(function (photographer) { 
     return photographer.id == idCheck();
   });
   console.log(listphotographFilter)
-
+  
+// affichage nom dans la modal
+  function modalName() {
+    for (let index = 0; index < listphotographFilter.length; index++) {
+      const element = listphotographFilter[index];
+      document.getElementById('nameModal').innerHTML = `<h2>Contactez-moi</h2><h2>${element.name}</h2>`
+      return element.name;
+    }}
+modalName()
 
 
   function firstName() {

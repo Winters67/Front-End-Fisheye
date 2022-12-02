@@ -6,9 +6,7 @@ export class Category {
   
   
   createCard() {
-    document.getElementById('nameModal').innerHTML = `<h2>Contactez-moi</h2><h2>${this.name}</h2>`
-
-    if (this.image === undefined)
+       if (this.image === undefined)
       return `<div class="card" data-id="${this.id}">
     <figure>
     <video>

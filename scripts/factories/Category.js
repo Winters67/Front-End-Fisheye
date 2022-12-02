@@ -3,8 +3,11 @@ export class Category {
     json && Object.assign(this, json);
     // console.log(this);
   }
-
+  
+  
   createCard() {
+    document.getElementById('nameModal').innerHTML = `<h2>Contactez-moi</h2><h2>${this.name}</h2>`
+
     if (this.image === undefined)
       return `<div class="card" data-id="${this.id}">
     <figure>

@@ -4,7 +4,9 @@ import { Category } from "../factories/Category.js";
 import { LightBox } from "../factories/Lightbox.js";
 import { displayModal, closeModal } from "../utils/contactForm.js";
 
-document.getElementById("contactButton").addEventListener("click", displayModal);
+document
+  .getElementById("contactButton")
+  .addEventListener("click", displayModal);
 document.getElementById("closeModal").addEventListener("click", closeModal);
 
 // Recupère les information des photographes
@@ -69,9 +71,12 @@ getData().then((result) => {
   let listPhotograph = result.photographers;
   console.log(listPhotograph);
 
-  let listphotographFilter = listPhotograph.filter(function (photographer) {
+  let listphotographFilter = listPhotograph.filter(function (photographer) { 
     return photographer.id == idCheck();
   });
+  console.log(listphotographFilter)
+
+
 
   function firstName() {
     for (let index = 0; index < listphotographFilter.length; index++) {

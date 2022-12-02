@@ -27,6 +27,7 @@ prenom.addEventListener("input", (e) => {
   document.getElementById("errorFirstName").innerHTML = erreur;
   if (e.target.value.length < 2 || e.target.value.length > 25) {
     erreur = "veuillez entrer 2 caractères ou plus dans le champ prénom ";
+    prenom.style.border = "2px solid red";
     valuePrenom = null;
   }
   // verifie si les caractères conrespondent au regex
@@ -36,11 +37,13 @@ prenom.addEventListener("input", (e) => {
     e.target.value.length < 25
   ) {
     erreur = "les caractères spéciaux ne sont pas autorisés";
+    prenom.style.border = "2px solid red";
     valuePrenom = null;
   }
   // si ok retourne la valeur dans valuePrenom
   if (e.target.value.match(regexName)) {
     valuePrenom = e.target.value;
+    prenom.style.border = "2px solid #42f67e";
     console.log("succes regex prénom");
   }
 });
@@ -51,6 +54,7 @@ nom.addEventListener("input", (e) => {
   document.getElementById("errorLastName").innerHTML = erreur;
   if (e.target.value.length < 2 || e.target.value.length > 25) {
     erreur = "veuillez entrer 2 caractères ou plus dans le champ nom ";
+    nom.style.border = "2px solid red";
     valueNom = null;
   }
   if (
@@ -59,10 +63,12 @@ nom.addEventListener("input", (e) => {
     e.target.value.length < 25
   ) {
     erreur = "les caractères spéciaux ne sont pas autorisés";
+    nom.style.border = "2px solid red";
     valueNom = null;
   }
   if (e.target.value.match(regexName)) {
     valueNom = e.target.value;
+    nom.style.border = "2px solid #42f67e";
     console.log("succes regex nom");
   }
 });
@@ -75,19 +81,21 @@ email.addEventListener("input", (e) => {
   // si le champs est vide retourne une erreur
   if (e.target.value.length == 0) {
     erreur = " Email manquant";
+    email.style.border = "2px solid red";
     console.log("rien");
     // retourne l'erreur
-
     valueEmail = null;
     console.log(valueEmail);
     // test la regex avec le champs
   } else if (e.target.value.match(regexEmail)) {
     valueEmail = e.target.value;
+    email.style.border = "2px solid #42f67e";
     console.log("succes regex Email");
   }
   // si diffferent de target.value affiche erreur
   if (!e.target.value.match(regexEmail) && !e.target.value.length == 0) {
     erreur = "Veuillez saisir une adresse e-mail valide :  example@email.com ";
+    email.style.border = "2px solid red";
 
     valueEmail = null;
   }
@@ -109,6 +117,8 @@ contact.addEventListener("submit", function (e) {
     );
   } else {
     e.preventDefault();
-    console.log("Champs du formulaire incomplet");
+    alert(
+      "Champs du formulaire incomplet, merci de bien remplir le formulaire"
+    );
   }
 });

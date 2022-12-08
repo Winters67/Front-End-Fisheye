@@ -23,8 +23,21 @@
         <button class="contact_button" id="contactButton">Contactez-moi</button>
         <div class="photograph-img"></div>
       </div>
-      <div class="select-menu">Trie par</div>
+
+      <nav class="nav">
+          <label id="nav-text">Trier par</label>
+          <select name="nav-select" id="nav-select">
+          <option   class="nav-option" id="nav-option-likes" value="Popularite" selected>Popularite</option>
+          <option   class="nav-option" id="nav-option-date" value="Date">Date</option>
+          <option class="nav-option" id="nav-option-title" value="Title">Title</option>
+        </select>
+ </nav>
+
+
+
+
       <div id="photograph-gallery"></div>
+      
     </main>
     <div id="lightbox">
       <div class="content">
@@ -96,7 +109,10 @@
         </section>
       </div>
     </div>
-
+    <div class="infoPhotographerDisplay">
+    </div>
+    <section>
+      
     <script src="/scripts/pages/photographer.js" type="module"></script>
     <script src="/scripts/utils/contactForm.js" type="module"></script>
     <script src="/scripts/factories/data.js" type="module"></script>

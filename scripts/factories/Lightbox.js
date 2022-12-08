@@ -76,7 +76,6 @@ export class LightBox {
       const box = `<img src= "/assets/images/${this.currentElement.name}/${this.currentElement.image}"  alt="${this.currentElement.title}">
       <div class= "title">${this.currentElement.title}</div>`;
       Object.assign(document.createElement("img"));
-
       document.querySelector("#lightbox .content .picture").innerHTML = box;
       document.querySelector("#lightbox").classList.add("show");
     }
@@ -93,3 +92,4 @@ export class LightBox {
     document.querySelector("#lightbox").classList.remove("show");
   }
 }
+

@@ -65,27 +65,27 @@ getData().then((result) => {
 
   let listCategoryFilter = listCategory.filter(function (media) {
     return media.photographerId == idCheck();
-
   });
-  
   // photographe
   let listPhotograph = result.photographers;
   console.log(listPhotograph);
-  
-  let listphotographFilter = listPhotograph.filter(function (photographer) { 
+
+  let listphotographFilter = listPhotograph.filter(function (photographer) {
     return photographer.id == idCheck();
   });
-  console.log(listphotographFilter)
-  
-// affichage nom dans la modal
+  console.log(listphotographFilter);
+
+  // affichage nom dans la modal
   function modalName() {
     for (let index = 0; index < listphotographFilter.length; index++) {
       const element = listphotographFilter[index];
-      document.getElementById('nameModal').innerHTML = `<h2>Contactez-moi</h2><h2>${element.name}</h2>`
+      document.getElementById(
+        "nameModal"
+      ).innerHTML = `<h2>Contactez-moi</h2><h2>${element.name}</h2>`;
       return element.name;
-    }}
-modalName()
-
+    }
+  }
+  modalName();
 
   function firstName() {
     for (let index = 0; index < listphotographFilter.length; index++) {
@@ -101,29 +101,68 @@ modalName()
     Object.assign(element, { name: firstName() });
     // console.log(element);
   }
-  let listCategoryDom = listCategoryFilter
-    .map((category) => category.createCard())
-    .join("");
 
-  document
-    .querySelector("#photograph-gallery")
-    .insertAdjacentHTML("afterbegin", listCategoryDom);
-
-  // lightBox
   let lightBox = new LightBox(listCategoryFilter);
+  const triLikes = document.getElementById("nav-select");
 
-  document
-    .querySelectorAll("#photograph-gallery .card")
-    .forEach((listCategoryDom) => {
-      listCategoryDom.addEventListener("click", (e) => {
-        lightBox.show(e.currentTarget.dataset.id);
+  triLikes.addEventListener("change", function (e) {
+    const element = document.getElementById("photograph-gallery");
+    console.log(typeof element);
+    if (e.target.value === "Popularite") {
+      listCategoryFilter.sort(function (a, b) {
+        return b.likes - a.likes;
       });
+    }
+    if (e.target.value === "Date") {
+      listCategoryFilter.sort(function (a, b) {
+        return a.date - b.date;
+      });
+    }
+    if (e.target.value === "Title") {
+      listCategoryFilter.sort(function (a, b) {
+        return a.title.localeCompare(b.title);
+      });
+    }
+    listCategoryFilter.forEach((element) => {
+      mediaDisplay(element);
+      element.innerHTML = "";
     });
+  });
+  function mediaDisplay() {
+    document.getElementById("photograph-gallery").innerHTML = "";
+    let listCategoryDom = listCategoryFilter
+      .map((category) => category.createCard())
+      .join("");
+    document
+      .querySelector("#photograph-gallery")
+      .insertAdjacentHTML("afterbegin", listCategoryDom);
+    document
+      .querySelectorAll("#photograph-gallery .card ")
+      .forEach((listCategoryDom) => {
+        listCategoryDom.addEventListener("click", (e) => {
+          lightBox.show(e.currentTarget.dataset.id);
+        });
+      });
 
-  // console.log(idCheck());
-  // console.log(category.media);
-  // console.log(listCategoryFilter);
-  return listCategoryDom;
+    function price() {
+      for (let index = 0; index < listphotographFilter.length; index++) {
+        const element = listphotographFilter[index];
+        console.log(element);
+        const result = listCategoryFilter
+        .map((i) => i.likes)
+        .reduce((a, b) => a + b);
+        console.log(result);
+        
+        const para = `<span class="likesInfoPhotographer">
+        <p class="likesContainer">${result}<img class="logoLikes" src="/assets/icons/heart-black.svg" alt="logo like" /></p>
+        <p>${element.price} € / jour </p> 
+      </span>`;
+        document.querySelector(".infoPhotographerDisplay").innerHTML = para;
+        
+      }
+    }
+    price();
+  }
+  initInfo();
+  mediaDisplay();
 });
-
-initInfo();

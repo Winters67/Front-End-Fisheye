@@ -3,11 +3,10 @@ export class Category {
     json && Object.assign(this, json);
     // console.log(this);
   }
-  
-  
+
   createCard() {
-       if (this.image === undefined)
-      return `<div class="card" data-id="${this.id}">
+    if (this.image === undefined)
+      return `<div class="card" id="card-id" data-id="${this.id}">
     <figure>
     <video>
     <source src="/assets/images/${this.name}/${this.video}" type="video/mp4"> 
@@ -22,7 +21,7 @@ export class Category {
        </div>`;
 
     if (this.video === undefined)
-      return `<div class="card" data-id="${this.id}">
+      return `<div class="card" id="card-id" data-id="${this.id}">
       <figure>
      <img src="/assets/images/${this.name}/${this.image}">
      <figcaption>

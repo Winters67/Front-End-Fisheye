@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
@@ -14,7 +14,7 @@
   <body>
     <header>
       <a href="index.html">
-        <img src="assets/images/logo.png" class="logo" />
+        <img src="assets/images/logo.png" class="logo" alt="logo Fisheye" />
       </a>
     </header>
     <main id="main">
@@ -24,44 +24,53 @@
         <div class="photograph-img"></div>
       </div>
 
-      
-      <nav class="nav-select">Trier par
-      <label class="custom-select">
-        
-        <select name="sample" id="nav-option-select" >
-          <option selected class="nav-option" id="option-Popularite" value="Popularite">Popularite</option>
-          <option class="nav-option" id="option-date" value="Date">Date</option>
-          <option class="nav-option" id="option-title" value="Title">Title</option>
-        </select>
-      </label>
+      <nav class="nav-select">
+        Trier par
+        <label class="custom-select">
+          <select
+            name="sample"
+            id="nav-option-select"
+            aria-label="Selection choix de classement"
+          >
+            <option
+              selected
+              class="nav-option"
+              id="option-Popularite"
+              value="Popularite"
+            >
+              Popularite
+            </option>
+            <option class="nav-option" id="option-date" value="Date">
+              Date
+            </option>
+            <option class="nav-option" id="option-title" value="Title">
+              Title
+            </option>
+          </select>
+        </label>
       </nav>
-        
-
-
-
 
       <div id="photograph-gallery"></div>
-      
     </main>
-    <div id="lightbox">
+    <div id="lightbox" aria-label="image closeup view">
       <div class="content">
-        <button class="previous">
-          <img src="assets\icons\left.svg" alt="gauche" />
+        <button class="previous" aria-label="Previous image">
+          <img src="assets/icons/left.svg" alt="gauche" />
         </button>
         <div class="picture"></div>
         <div class="cross-right">
-          <button class="close">
-            <img src="assets\icons\cross.svg" alt="croix" />
+          <button class="close" aria-label="Close dialog">
+            <img src="assets/icons/cross.svg" alt="croix" />
           </button>
-          <button class="next">
-            <img src="assets\icons\right.svg" alt="droite" />
+          <button class="next" aria-label="next image">
+            <img src="assets/icons/right.svg" alt="droite" />
           </button>
         </div>
       </div>
     </div>
     <div id="contact_modal">
       <div class="modal">
-        <header> 
+        <header>
           <h2 id="nameModal"></h2>
           <button id="closeModal">
             <img src="../assets/icons/close.svg" alt="croix" />
@@ -73,6 +82,7 @@
             <div class="contained">
               <label>Prénom</label>
               <input
+                aria-label="Prénom"
                 class="text-control"
                 type="text"
                 id="firstName"
@@ -82,6 +92,7 @@
 
               <label>Nom</label>
               <input
+                aria-label="Nom"
                 class="text-control"
                 type="text"
                 id="lastName"
@@ -91,6 +102,7 @@
 
               <label>Email</label>
               <input
+                aria-label="Email"
                 class="text-control"
                 type="text"
                 id="e-mail"
@@ -100,27 +112,32 @@
 
               <label>Votre message</label>
               <input
+                aria-label="Votre message"
                 class="text-control-message"
                 type="text"
                 id="message"
                 name="message"
               />
             </div>
-            <button class="contact_button" id="submit" type="submit">
+            <button
+              class="contact_button"
+              id="submit"
+              type="submit"
+              aria-label="fermer le formulaire"
+            >
               Envoyer
             </button>
           </form>
         </section>
       </div>
     </div>
-    <div class="infoPhotographerDisplay">
-    </div>
-    <section>
-      
+    <div class="infoPhotographerDisplay"></div>
+
     <script src="/scripts/pages/photographer.js" type="module"></script>
     <script src="/scripts/utils/contactForm.js" type="module"></script>
     <script src="/scripts/factories/data.js" type="module"></script>
     <script src="/scripts/factories/Category.js" type="module"></script>
     <script src="/scripts/factories/Lightbox.js" type="module"></script>
+    <script src="/scripts/utils/likes.js"></script>
   </body>
 </html>

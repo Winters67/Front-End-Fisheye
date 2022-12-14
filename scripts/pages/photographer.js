@@ -59,42 +59,42 @@ async function initInfo() {
 }
 
 // menu trie
-document.querySelectorAll('.custom-select').forEach(setupSelector);
+document.querySelectorAll(".custom-select").forEach(setupSelector);
 
 function setupSelector(selector) {
-  selector.addEventListener('change', e => {
-    console.log('changed', e.target.value)
-  })
+  selector.addEventListener("change", (e) => {
+    console.log("changed", e.target.value);
+  });
 
-  selector.addEventListener('mousedown', e => {
-    if(window.innerWidth >= 420) {// override look for non mobile
+  selector.addEventListener("mousedown", (e) => {
+    if (window.innerWidth >= 420) {
       e.preventDefault();
 
       const select = selector.children[0];
-      const dropDown = document.createElement('ul');
+      const dropDown = document.createElement("ul");
       dropDown.className = "selector-options";
 
-      [...select.children].forEach(option => {
-        const dropDownOption = document.createElement('li');
+      [...select.children].forEach((option) => {
+        const dropDownOption = document.createElement("li");
         dropDownOption.textContent = option.textContent;
 
-        dropDownOption.addEventListener('mousedown', (e) => {
+        dropDownOption.addEventListener("mousedown", (e) => {
           e.stopPropagation();
           select.value = option.value;
           selector.value = option.value;
-          select.dispatchEvent(new Event('change'));
-          selector.dispatchEvent(new Event('change'));
+          select.dispatchEvent(new Event("change"));
+          selector.dispatchEvent(new Event("change"));
           dropDown.remove();
         });
 
-        dropDown.appendChild(dropDownOption);   
+        dropDown.appendChild(dropDownOption);
       });
 
       selector.appendChild(dropDown);
 
       // handle click out
-      document.addEventListener('click', (e) => {
-        if(!selector.contains(e.target)) {
+      document.addEventListener("click", (e) => {
+        if (!selector.contains(e.target)) {
           dropDown.remove();
         }
       });
@@ -197,10 +197,13 @@ getData().then((result) => {
           .reduce((a, b) => a + b);
         // console.log(result);
 
-        const para = `<span class="likesInfoPhotographer">
-        <p class="likesContainer">${result}<img class="logoLikes" src="/assets/icons/heart-black.svg" alt="logo like" /></p>
-        <p>${element.price} € / jour </p> 
-      </span>`;
+        const para = `<div class="likesInfoPhotographer" aria-label="affiche total likes + prix">
+        <div class="likesTotal">
+        <span aria-label="total likes" class="likesContainer">${result}</span>
+        <img class="logoLikes" src="/assets/icons/heart-black.svg" alt="logo like" />
+        </div>
+        <span>${element.price} € / jour</span> 
+      </div>`;
         document.querySelector(".infoPhotographerDisplay").innerHTML = para;
       }
     }

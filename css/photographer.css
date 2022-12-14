@@ -42,7 +42,7 @@
 
 
 .photograph-info  article p {
-    color: #757575;
+    color: #4F4F4F;
     font-weight: 400;
     font-size: 18px;
     margin: 0;
@@ -86,40 +86,17 @@
     padding: auto;
 }
 
-
-#photograph-gallery .card figure{
-    width: 350px ;
-    height: 300px;
-    margin: 0;
-    padding: 0;
-}
-
-#photograph-gallery .card figure figcaption {
+#photograph-gallery  figcaption {
     display: flex;
     font-size: 24px;
     color: #901C1C;
     font-weight: 400;
     justify-content: space-between;
-    
-    
-    
-}
+    max-width: 100%;
+    margin-top: -20px;
+    width: 350px ;
 
-#photograph-gallery .card figure figcaption  {
-    width: 350px;
-    height: 30px;
-    
-    display: flex;
-    align-items: center;
-    
-    
-    
-}
-
-#photograph-gallery .card figure figcaption img {
-    justify-items: center;
-    width: 17.5px;
-    margin: 3px;
+         
 }
 
 #photograph-gallery .card figure figcaption p {
@@ -129,18 +106,19 @@
     
 }
 #photograph-gallery .card img {
-    width: 100% ;
-    height: 100%;
+    width: 350px ;
+    height: 300px;
     border-radius: 5px;
     object-fit: cover;
-
-
+    cursor: pointer;
 }
+
 #photograph-gallery .card video {
-    width: 100% ;
-    height: 100%;
+    width: 350px ;
+    height: 300px;
     border-radius: 5px;
     object-fit: cover;
+    cursor: pointer;
 }
 /* lightbox */
 #lightbox {
@@ -367,11 +345,15 @@ p .likesContainer {
     display: flex;
     font-size: 24px;
     justify-content: space-around;
-    
-    
+    align-items: center;
+}
+.likesTotal {
+display: flex;
+align-items: center;
 }
 
 .logoLikes {
+   margin: 10px;
     width: 17.5px;
     height: 18.35px;
 }
@@ -459,3 +441,22 @@ margin-left: 100px;
     background: url(/assets/icons/Atop.svg) no-repeat;
     background-position: right  bottom 55%;
   } 
+
+  .btn-like {
+    display: flex;
+    align-items: center;
+    
+    border: none;
+    background: none;
+    cursor: pointer;
+   
+    font-size: 24px;
+    color: #901C1C;
+    font-weight: 400;
+    padding-right: 0px;
+    
+  }
+
+  .btn-like p {
+    margin :5px
+  }

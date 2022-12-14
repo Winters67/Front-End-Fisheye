@@ -52,7 +52,7 @@
 
       <div id="photograph-gallery"></div>
     </main>
-    <div id="lightbox" aria-label="image closeup view">
+    <div id="lightbox">
       <div class="content">
         <button class="previous" aria-label="Previous image">
           <img src="assets/icons/left.svg" alt="gauche" />
@@ -71,64 +71,62 @@
     <div id="contact_modal">
       <div class="modal">
         <header>
-          <h2 id="nameModal"></h2>
+          <span id="nameModal"></span>
           <button id="closeModal">
             <img src="../assets/icons/close.svg" alt="croix" />
           </button>
         </header>
 
-        <section id="section">
-          <form id="contact" name="contact" action="index.html" method="get">
-            <div class="contained">
-              <label>Prénom</label>
-              <input
-                aria-label="Prénom"
-                class="text-control"
-                type="text"
-                id="firstName"
-                name="firstName"
-              />
-              <p id="errorFirstName"></p>
+        <form id="contact" name="contact" action="index.html" method="get">
+          <div class="contained">
+            <label>Prénom</label>
+            <input
+              aria-label="Prénom"
+              class="text-control"
+              type="text"
+              id="firstName"
+              name="firstName"
+            />
+            <p id="errorFirstName"></p>
 
-              <label>Nom</label>
-              <input
-                aria-label="Nom"
-                class="text-control"
-                type="text"
-                id="lastName"
-                name="LastName"
-              />
-              <p id="errorLastName"></p>
+            <label>Nom</label>
+            <input
+              aria-label="Nom"
+              class="text-control"
+              type="text"
+              id="lastName"
+              name="LastName"
+            />
+            <p id="errorLastName"></p>
 
-              <label>Email</label>
-              <input
-                aria-label="Email"
-                class="text-control"
-                type="text"
-                id="e-mail"
-                name="e-mail"
-              />
-              <p id="errorMail"></p>
+            <label>Email</label>
+            <input
+              aria-label="Email"
+              class="text-control"
+              type="text"
+              id="e-mail"
+              name="e-mail"
+            />
+            <p id="errorMail"></p>
 
-              <label>Votre message</label>
-              <input
-                aria-label="Votre message"
-                class="text-control-message"
-                type="text"
-                id="message"
-                name="message"
-              />
-            </div>
-            <button
-              class="contact_button"
-              id="submit"
-              type="submit"
-              aria-label="fermer le formulaire"
-            >
-              Envoyer
-            </button>
-          </form>
-        </section>
+            <label>Votre message</label>
+            <input
+              aria-label="Votre message"
+              class="text-control-message"
+              type="text"
+              id="message"
+              name="message"
+            />
+          </div>
+          <button
+            class="contact_button"
+            id="submit"
+            type="submit"
+            aria-label="fermer le formulaire"
+          >
+            Envoyer
+          </button>
+        </form>
       </div>
     </div>
     <div class="infoPhotographerDisplay"></div>

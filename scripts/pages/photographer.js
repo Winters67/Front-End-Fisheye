@@ -4,6 +4,7 @@ import { Category } from "../factories/Category.js";
 import { LightBox } from "../factories/Lightbox.js";
 import { displayModal, closeModal } from "../utils/contactForm.js";
 
+
 document
   .getElementById("contactButton")
   .addEventListener("click", displayModal);
@@ -28,9 +29,16 @@ async function getPhotographerInfo(userId) {
       return photographer.id === userId;
     });
     return filterPhotographer[0];
-  } catch {
-    console.log("error");
+  } catch (error ) {
+
+    console.log (error);
   }
+
+  
+
+
+  
+  
 }
 
 function displayData(photographer) {

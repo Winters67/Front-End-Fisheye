@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 function getLikes() {
   const hearts = document.querySelectorAll(" .btn-like ");
   const totalLike = document.querySelector(".likesContainer");

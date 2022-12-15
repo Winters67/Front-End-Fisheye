@@ -26,12 +26,8 @@
 
       <nav class="nav-select">
         Trier par
-        <label class="custom-select">
-          <select
-            name="sample"
-            id="nav-option-select"
-            aria-label="Selection choix de classement"
-          >
+        <label for="nav-option-select" class="custom-select">
+          <select id="nav-option-select">
             <option
               selected
               class="nav-option"
@@ -79,7 +75,7 @@
 
         <form id="contact" name="contact" action="index.html" method="get">
           <div class="contained">
-            <label>Prénom</label>
+            <label for="firstName">Prénom</label>
             <input
               aria-label="Prénom"
               class="text-control"
@@ -89,7 +85,7 @@
             />
             <p id="errorFirstName"></p>
 
-            <label>Nom</label>
+            <label for="lastName">Nom</label>
             <input
               aria-label="Nom"
               class="text-control"
@@ -99,19 +95,12 @@
             />
             <p id="errorLastName"></p>
 
-            <label>Email</label>
-            <input
-              aria-label="Email"
-              class="text-control"
-              type="text"
-              id="e-mail"
-              name="e-mail"
-            />
+            <label for="email">Email</label>
+            <input class="text-control" type="email" id="email" name="email" />
             <p id="errorMail"></p>
 
-            <label>Votre message</label>
+            <label for="message">Votre message</label>
             <input
-              aria-label="Votre message"
               class="text-control-message"
               type="text"
               id="message"

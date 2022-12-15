@@ -1,7 +1,6 @@
-export{getData}
+export { getData };
 
-
-async function getData(userId) {
+async function getData() {
   let result = await fetch("../data/photographers.json");
   return await result.json();
 }

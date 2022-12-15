@@ -13,13 +13,13 @@ function closeModal() {
 
 const prenom = document.getElementById("firstName");
 const nom = document.getElementById("lastName");
-const email = document.getElementById("e-mail");
+const email = document.getElementById("email");
 
 const regexName = /^[a-z A-Z]{2,25}$/;
-const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const regexEmail = /^\w+([ .-]?\w+)*@\w+([ .-]?\w+)*(\.\w{2,3})+$/;
 
 // variable qui stocke les valeurs des conditions
-let valuePrenom, valueNom, valueEmail;
+let valuePrenom, valueNom, valueEmail ;
 let erreur = "";
 
 // Prénom ------------ ------------------------------------------------------
@@ -103,7 +103,8 @@ email.addEventListener("input", (e) => {
 
 // envoi du formulaire
 
-contact.addEventListener("submit", function (e) {
+
+addEventListener("submit", function (e) {
   if (valuePrenom && valueNom && valueEmail) {
     alert(
       "Nom : " +

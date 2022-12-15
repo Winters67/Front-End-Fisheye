@@ -26,7 +26,6 @@ function photographerFactory(data) {
     article.appendChild(h2);
     article.appendChild(h3);
     article.appendChild(p);
-
     return a;
   }
 

@@ -46,6 +46,7 @@
         </label>
       </nav>
 
+      <div class="infoPhotographerDisplay"></div>
       <div id="photograph-gallery"></div>
     </main>
     <div id="lightbox">
@@ -69,10 +70,10 @@
         <header>
           <span id="nameModal"></span>
           <button id="closeModal">
-            <img src="../assets/icons/close.svg" alt="croix" />
+            <img src="../assets/icons/close.svg" alt="fermer" />
           </button>
         </header>
-
+        
         <form id="contact" name="contact" action="index.html" method="get">
           <div class="contained">
             <label for="firstName">Prénom</label>
@@ -96,15 +97,22 @@
             <p id="errorLastName"></p>
 
             <label for="email">Email</label>
-            <input class="text-control" type="email" id="email" name="email" />
+            <input
+              class="text-control"
+              type="email"
+              id="email"
+              name="email"
+              aria-label="Email"
+            />
             <p id="errorMail"></p>
 
             <label for="message">Votre message</label>
             <input
-              class="text-control-message"
-              type="text"
-              id="message"
+            class="text-control-message"
+            type="text"
+            id="message"
               name="message"
+              aria-label="message"
             />
           </div>
           <button
@@ -118,7 +126,6 @@
         </form>
       </div>
     </div>
-    <div class="infoPhotographerDisplay"></div>
 
     <script src="/scripts/pages/photographer.js" type="module"></script>
     <script src="/scripts/utils/contactForm.js" type="module"></script>

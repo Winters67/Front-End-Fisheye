@@ -12,6 +12,7 @@ export class LightBox {
   }
   
   next() {
+    
     let index = this.listElement.findIndex(
       (element) => element.id == this.currentElement.id
       );
@@ -69,7 +70,7 @@ export class LightBox {
   getElementById(id) {
     return this.listElement.find((element) => element.id == id);
   }
-
+  
   
   display() {
     if (this.currentElement.video == undefined) {

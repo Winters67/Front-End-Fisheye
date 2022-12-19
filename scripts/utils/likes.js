@@ -9,7 +9,7 @@ function getLikes() {
     heart.addEventListener("click", function () {
       const like = heart.firstElementChild;
       let countLike = Number(like.textContent);
-
+   
       if (heart.classList.contains("liked")) {
         heart.classList.remove("liked");
         countLike -= 1;

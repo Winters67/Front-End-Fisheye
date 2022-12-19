@@ -4,20 +4,19 @@ import { Category } from "../factories/Category.js";
 import { LightBox } from "../factories/Lightbox.js";
 import { displayModal, closeModal } from "../utils/contactForm.js";
 
-
+// modal
 document
   .getElementById("contactButton")
   .addEventListener("click", displayModal);
 document.getElementById("closeModal").addEventListener("click", closeModal);
 
-// Recupère les information des photographes
-
+// Recupère l'id des photographes
 function idCheck() {
   const url = new URL(window.location.href);
   const id = url.searchParams.get("id");
   return id;
 }
-
+// photographe filtrer par id  actif de ma page
 async function getPhotographerInfo(userId) {
   try {
     const response = await fetch("../data/photographers.json");
@@ -28,19 +27,14 @@ async function getPhotographerInfo(userId) {
     ) {
       return photographer.id === userId;
     });
+    console.log(filterPhotographer[0]); //retourne l'objet photographe
     return filterPhotographer[0];
-  } catch (error ) {
-
-    console.log (error);
+  } catch (error) {
+    console.log(error);
   }
 
-  
-
-
-  
-  
+  // affichage des photographes
 }
-
 function displayData(photographer) {
   const photographersInfo = document.querySelector(".photograph-info");
   const photographersImg = document.querySelector(".photograph-img");
@@ -94,13 +88,9 @@ function setupSelector(selector) {
           selector.dispatchEvent(new Event("change"));
           dropDown.remove();
         });
-
         dropDown.appendChild(dropDownOption);
       });
-
       selector.appendChild(dropDown);
-
-      // handle click out
       document.addEventListener("click", (e) => {
         if (!selector.contains(e.target)) {
           dropDown.remove();
@@ -110,6 +100,7 @@ function setupSelector(selector) {
   });
 }
 
+// Data avec la logique de filtre des photos ainsi que les videos
 getData().then((result) => {
   // media
   let listMedia = result.media;
@@ -157,6 +148,7 @@ getData().then((result) => {
   let lightBox = new LightBox(listCategoryFilter);
   const triLikes = document.getElementById("nav-option-select");
 
+  // trie les medias en fonction du menu choisi
   triLikes.addEventListener("change", function (e) {
     const element = document.getElementById("photograph-gallery");
     console.log(typeof element);
@@ -180,6 +172,8 @@ getData().then((result) => {
       element.innerHTML = "";
     });
   });
+
+  // affiche les medias / fichier Category.js
   function mediaDisplay() {
     document.getElementById("photograph-gallery").innerHTML = "";
     let listCategoryDom = listCategoryFilter
@@ -195,7 +189,7 @@ getData().then((result) => {
           lightBox.show(e.currentTarget.dataset.id);
         });
       });
-
+    // vignette fix page photographe
     function priceLikes() {
       for (let index = 0; index < listphotographFilter.length; index++) {
         const element = listphotographFilter[index];

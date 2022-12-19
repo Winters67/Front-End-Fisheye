@@ -1,3 +1,4 @@
+// logique des ajouts de like
 /* eslint-disable no-unused-vars */
 function getLikes() {
   const hearts = document.querySelectorAll(" .btn-like ");
